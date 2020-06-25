@@ -8,7 +8,7 @@ import {signInApi, setTokenApi} from "../../api/auth";
 import "./SignInForm.scss";
 
 export default function SignInForm(props) {
-    console.log(props);
+    
     const {setRefreshCheckLogin} = props;
     const [formData, setFormData] = useState(initialFormValue())
     const [signInLoading, setSignInLoading] = useState(false);

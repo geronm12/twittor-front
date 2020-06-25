@@ -1,6 +1,5 @@
 
 import {API_HOST, TOKEN} from "../utils/constant";
-import jwtDeecode from "jwt-decode";
 import JwtDecode from "jwt-decode";
 import { identity } from "lodash";
 

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ConfigModal from "../../Modal/ConfigModal";
+import EditUserForm from "../../User/EditUserForm";
 import {API_HOST} from '../../../utils/constant';
 import AvatarNoFound from "../../../assets/png/no-img.png";
 import {Button} from "react-bootstrap";
@@ -9,7 +11,7 @@ import "./BannerAvatar.scss";
 export default function BannerAvatar(props) {
 
     const {user, loggedUser} = props;
-
+    const [showModal, setShowModal] = useState(false)
     const bannerUrl = user?.banner ? 
     `${API_HOST}/obtenerBanner?id=${user.id}` 
     : null;
@@ -28,7 +30,7 @@ export default function BannerAvatar(props) {
          {user && (
             <div className="options">
             {loggedUser._id === user.id && (
-            <Button>Editar Perfil</Button>
+            <Button onClick={() => setShowModal(true)}>Editar Perfil</Button>
             )}
             
             {loggedUser._id !== user.id && (
@@ -39,6 +41,10 @@ export default function BannerAvatar(props) {
             </div>
          )}   
 
+        <ConfigModal show={showModal} setShow={setShowModal} title="Editar perfil">
+        <EditUserForm user={user} setShowModal={setShowModal}/>
+        </ConfigModal>
         </div>
+
     )
 }

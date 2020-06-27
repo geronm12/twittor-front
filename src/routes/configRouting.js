@@ -21,7 +21,7 @@ export default [
        page: Home,
      },
      {
-       path: "*",
+       path: "/*",
        page: Error404,
      },
    ];

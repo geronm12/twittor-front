@@ -11,6 +11,7 @@ import ListTweets from '../../components/ListTweets';
 import {getUserApi} from "../../api/user";
 import {getUserTweetApi} from "../../api/tweet";
  
+
 import "./User.scss";
  function User(props) {
     
@@ -58,9 +59,12 @@ import "./User.scss";
         })
 
     }
-
+     
+ 
     return (
         <BasicLayout className="user" setRefreshCheckLogin={setRefreshCheckLogin}>
+          
+          
           <div className="user__title">
           <h2>
               {user ? `${user.nombre} ${user.apellidos}` : <Spinner as="span" animation="grow" size="lg" role="status" arian-hidden="true"/>}
@@ -88,6 +92,8 @@ import "./User.scss";
                 )}
              </Button>
           </div>
+        
+            
         </BasicLayout>
     )
 }

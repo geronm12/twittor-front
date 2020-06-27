@@ -7,7 +7,7 @@ import configRouting from "./configRouting";
 export default function Routing(props) {
     
     const {setRefreshCheckLogin} = props;
-    
+     
     return (
         <Router>
             <Switch>
@@ -19,5 +19,5 @@ export default function Routing(props) {
             </Switch>
         </Router>
 
-    )
+    );
 }

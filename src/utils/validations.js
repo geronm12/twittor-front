@@ -4,3 +4,4 @@ export function isEmailValid(email) {
     return emailValid.test(String(email).toLowerCase());
   }
   
+

@@ -8,19 +8,17 @@ import "./BasicLayout.scss";
 export default function BasicLayout(props) {
 
     const {className,children, setRefreshCheckLogin} = props;
-
+    
     return (
         <Container className={`basic-layout ${className}`}>
             <Row>
                 <Col xs={3} className="basic-layout__menu">
                 <LeftMenu setRefreshCheckLogin={setRefreshCheckLogin}/>
                 </Col>
-                <Col xs={6} className="basic-layout__content">
+                <Col xs={9} className="basic-layout__content">
                 {children}
                 </Col>
-                <Col xs={3}>
-                 Derecha
-                </Col>
+                
             </Row>
         </Container>
     )

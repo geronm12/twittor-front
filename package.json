@@ -10,10 +10,12 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
+    "classnames": "^2.2.6",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
+    "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-datepicker": "^3.0.0",
@@ -22,6 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-toastify": "^6.0.6",
+    "use-debounce": "^3.4.2",
     "websocket-extensions": "^0.1.4"
   },
   "scripts": {

@@ -26,9 +26,9 @@ export default function App() {
 
   return (
      <AuthContext.Provider value={user}>
-       {user ? (<div>
+       {user ? (
         <Routing setRefreshCheckLogin={setRefreshCheckLogin}/>
-       </div>) : (<SignInSignUp setRefreshCheckLogin={setRefreshCheckLogin}/>)}
+   ) : (<SignInSignUp setRefreshCheckLogin={setRefreshCheckLogin}/>)}
      <ToastContainer 
      position="top-right"
      autoClose = {5000}
@@ -41,8 +41,6 @@ export default function App() {
      pauseOnHover
      />
      </AuthContext.Provider>
-    
-    
-   )
+    )
  
 }

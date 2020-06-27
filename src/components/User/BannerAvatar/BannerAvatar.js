@@ -1,17 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ConfigModal from "../../Modal/ConfigModal";
 import EditUserForm from "../../User/EditUserForm";
 import {API_HOST} from '../../../utils/constant';
 import AvatarNoFound from "../../../assets/png/no-img.png";
 import {Button} from "react-bootstrap";
-
+import {checkFollowApi, followUserApi, unfollowUserApi} from "../../../api/follow";
 
 import "./BannerAvatar.scss";
 
 export default function BannerAvatar(props) {
 
     const {user, loggedUser} = props;
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false);
+
+    const [following, setFollowing] = useState(null);
+    const [reloadFolow, setReloadFollow] = useState(false);
+
     const bannerUrl = user?.banner ? 
     `${API_HOST}/obtenerBanner?id=${user.id}` 
     : null;
@@ -19,6 +23,33 @@ export default function BannerAvatar(props) {
     const avatarUrl = user?.avatar ?
     `${API_HOST}/obtenerAvatar?id=${user.id}`
     : AvatarNoFound;
+  
+    useEffect(() => {
+       if(user?.id){
+        checkFollowApi(user?.id).then(response => {
+            if(response?.status){
+                setFollowing(true);
+            }else{
+                setFollowing(false);
+            }
+         });
+       }
+       setReloadFollow(false);
+    },[user,reloadFolow]);
+      
+
+
+    const onFollow = () => {
+        followUserApi(user.id).then(() => {
+         setReloadFollow(true);
+        });
+    }
+
+    const onUnfollow = () => {
+        unfollowUserApi(user.id).then(() => {
+        setReloadFollow(true);
+        });
+    }
 
     return (
         <div className="banner-avatar" 
@@ -34,10 +65,14 @@ export default function BannerAvatar(props) {
             )}
             
             {loggedUser._id !== user.id && (
-                <Button >
-                 Seguir
-                </Button>
+                following !== null && (
+                    (following ? <Button onClick={onUnfollow} className="unfollow">
+                        <span>Siguiendo</span>
+                        </Button> 
+                        : <Button onClick={onFollow}>Seguir</Button>)
+                )
             )}
+            
             </div>
          )}   
 
